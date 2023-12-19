@@ -1,0 +1,27 @@
+.categories-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories-container {
+  display: flex;
+  width: 68.4rem;
+
+  overflow: scroll;
+  gap: 2.4rem;
+}
+
+.categories-container::-webkit-scrollbar {
+  display: none;
+}
+
+.category {
+  border-radius: 30px;
+  padding: 0.8rem 1.6rem;
+  font-family: FiraGoRegular;
+  font-size: 1.2rem;
+  list-style-type: none;
+  display: flex;
+  flex-shrink: 0;
+}
