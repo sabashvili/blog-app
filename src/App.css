@@ -1,25 +1,34 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-  html {
-    font-size: 62.5%;
-  }
+html {
+  font-size: 62.5%;
+}
 
-  body{
-    width: 1920px;
-    height: 1080px;
-  }
+body {
+  width: 1920px;
+  height: 1080px;
+  background: #f3f2fa;
+}
 
-  @font-face {
-    font-family: firaGo;
-    src: url(./Fonts//FiraGO-Regular.ttf);
-  }
+a {
+  text-decoration: none;
+}
 
-  @font-face {
-    font-family: firaGo;
-    src: url(./Fonts//FiraGO-Bold.ttf);
-  }
+@font-face {
+  font-family: firaGoRegular;
+  src: url(./Fonts//FiraGO-Regular.ttf);
+}
 
+@font-face {
+  font-family: firaGoMedium;
+  src: url(./Fonts//FiraGO-Medium.ttf);
+}
+
+@font-face {
+  font-family: firaGoBold;
+  src: url(./Fonts//FiraGO-Bold.ttf);
+}

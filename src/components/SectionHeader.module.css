@@ -1,0 +1,13 @@
+.section-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 6.4rem 7.6rem 6.4rem 8.9rem;
+}
+
+.section-header-text {
+  color: #1a1a1f;
+  font-family: FiraGoBold;
+  font-size: 6.4rem;
+  font-style: normal;
+}

@@ -1,7 +1,14 @@
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import SectionHeader from "./components/SectionHeader";
 
 function App() {
-  return <div className='test'>ბლოგი</div>
+  return (
+    <header>
+      <Header />
+      <SectionHeader />
+    </header>
+  );
 }
 
 export default App;
