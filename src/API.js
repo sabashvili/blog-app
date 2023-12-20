@@ -1,5 +1,5 @@
 const API_URL = "https://api.blog.redberryinternship.ge/api";
-const TOKEN = "85332c926ac083c613553d69d6b42dd3169c4bf002bce3425e76b2ca86ae9a1f";
+const TOKEN = "59cc20dfcd124d87aa8af54342e1ed9438e70473c8422d820221b5bd5945f28a";
 
 export const getCategories = () => fetch(`${API_URL}/categories`);
 export const getBlogs = () =>
