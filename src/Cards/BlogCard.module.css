@@ -1,0 +1,66 @@
+.blog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-pic {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.blog-author {
+  margin-top: 2.4rem;
+  color: #1a1a1f;
+  font-family: FiraGoRegular;
+  font-size: 1.6rem;
+}
+
+.blog-date {
+  margin-top: 0.8rem;
+  color: #85858d;
+  font-family: FiraGoRegular;
+  font-size: 1.2rem;
+}
+
+.blog-information {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.blog-title {
+  color: #1a1a1f;
+  font-family: FiraGoRegular;
+  font-size: 2rem;
+}
+
+.categories-container {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.category {
+  border-radius: 30px;
+  padding: 0.8rem 1.6rem;
+  font-family: FiraGoRegular;
+  font-size: 1.2rem;
+  list-style-type: none;
+  display: flex;
+  flex-shrink: 0;
+  background-color: red;
+}
+
+.blog-description {
+  color: #404049;
+  font-family: FiraGoRegular;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
