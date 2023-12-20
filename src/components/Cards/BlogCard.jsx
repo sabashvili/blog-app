@@ -1,12 +1,19 @@
 import classes from "./BlogCard.module.css";
-import blogOpenArrowIcon from "../Images/blog-open-arrow-icon.svg";
+import blogOpenArrowIcon from "../../Images/blog-open-arrow-icon.svg";
 
 const BlogCard = ({ blog }) => {
   const { id, author, title, description, image, categories, publish_date } = blog;
 
   return (
-    <li key={id} className={classes["blog-container"]}>
-      <img className={classes["blog-pic"]} src={image} alt="blog" />
+    <li
+      key={id}
+      className={classes["blog-container"]}
+    >
+      <img
+        className={classes["blog-pic"]}
+        src={image}
+        alt="blog"
+      />
       <h3 className={classes["blog-author"]}>{author}</h3>
       <h5 className={classes["blog-date"]}>{publish_date}</h5>
       <div className={classes["blog-information"]}>
@@ -25,9 +32,15 @@ const BlogCard = ({ blog }) => {
           })}
         </ul>
         <p className={classes["blog-description"]}>{description}</p>
-        <a href="/" className={classes["blog-fully-open"]}>
+        <a
+          href="/"
+          className={classes["blog-fully-open"]}
+        >
           სრულად ნახვა
-          <img src={blogOpenArrowIcon} alt="arrow icon" />
+          <img
+            src={blogOpenArrowIcon}
+            alt="arrow icon"
+          />
         </a>
       </div>
     </li>

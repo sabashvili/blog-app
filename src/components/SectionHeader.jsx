@@ -5,7 +5,10 @@ const SectionHeader = () => {
   return (
     <div className={classes["section-header-container"]}>
       <h1 className={classes["section-header-text"]}>ბლოგი</h1>
-      <img src={mainPagePic} alt="main page picture" />
+      <img
+        src={mainPagePic}
+        alt="space"
+      />
     </div>
   );
 };
