@@ -1,4 +1,4 @@
-.login-modal {
+.success-modal {
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -7,7 +7,7 @@
   padding: 2rem 2.4rem 4rem 2.4rem;
 }
 
-.login-modal-close-btn {
+.success-modal-close-btn {
   align-self: end;
   display: inline-block;
   background-color: inherit;
@@ -15,12 +15,12 @@
   cursor: pointer;
 }
 
-.login-modal-close-icon {
+.success-modal-close-icon {
   width: 2.4rem;
   height: 2.4rem;
 }
 
-.login-modal-title {
+.success-modal-title {
   color: #1a1a1f;
   text-align: center;
   font-family: FiragoBold;
@@ -28,31 +28,13 @@
   margin-top: 2rem;
 }
 
-.login-email-label {
-  color: #1a1a1f;
-  font-family: FiragoMedium;
-
-  font-size: 1.4rem;
-  line-height: 20px;
-  display: block;
-  margin-top: 2.4rem;
-  margin-bottom: 0.8rem;
+.success-modal-icon {
+  width: 6.4rem;
+  height: 6.4rem;
+  align-self: center;
 }
 
-.login-email-input {
-  height: 4.4rem;
-  width: 100%;
-  border-radius: 12px;
-  border: 1.5px solid #5d37f3;
-  background: #f7f7ff;
-  padding: 1.2rem 0 1.2rem 1.6rem;
-}
-
-.login-email-input:focus {
-  outline: none;
-}
-
-.login-btn {
+.success-btn {
   height: 4rem;
   width: 100%;
   border-radius: 8px;
@@ -63,10 +45,4 @@
   margin-top: 2.4rem;
   cursor: pointer;
   border: none;
-}
-
-.error-border {
-  border-radius: 12px;
-  border: 1px solid #ea1919;
-  background: #faf2f3;
 }

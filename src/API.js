@@ -6,3 +6,12 @@ export const getBlogs = () =>
   fetch(`${API_URL}/blogs`, {
     headers: { Authorization: `Bearer ${TOKEN}` },
   });
+
+export const login = (loginEmail) =>
+  fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: { accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: loginEmail,
+    }),
+  });

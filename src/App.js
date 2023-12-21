@@ -6,20 +6,23 @@ import SectionHeader from "./components/SectionHeader";
 import BlogsSection from "./components/BlogsSection";
 import LoginModal from "./components/Modals/LoginModal";
 import ModalProvider from "./components/Providers/ModalProvider";
+import AuthProvider from "./components/Providers/AuthProvider";
+import SuccessModal from "./components/Modals/SuccessModal";
 
 function App() {
   return (
-    <ModalProvider>
-      <header>
-        <Header />
-        <SectionHeader />
-      </header>
-      <main>
-        <CategoriesSection />
-        <BlogsSection />
-        <LoginModal />
-      </main>
-    </ModalProvider>
+    <AuthProvider>
+      <ModalProvider>
+        <header>
+          <Header />
+          <SectionHeader />
+        </header>
+        <main>
+          <CategoriesSection />
+          <BlogsSection />
+        </main>
+      </ModalProvider>
+    </AuthProvider>
   );
 }
 
