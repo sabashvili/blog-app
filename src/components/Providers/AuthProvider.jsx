@@ -1,7 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const AuthProvider = (props) => {
-  const [authorized, setAuthorized] = useState(false);
+  const authorizedInitialValue = localStorage.getItem("authorized") === "true";
+  const [authorized, setAuthorized] = useState(authorizedInitialValue);
+
+  useEffect(() => {
+    localStorage.setItem("authorized", authorized);
+  }, [authorized]);
 
   return <AuthContext.Provider value={{ authorized, setAuthorized }}>{props.children}</AuthContext.Provider>;
 };

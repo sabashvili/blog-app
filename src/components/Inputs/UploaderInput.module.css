@@ -1,0 +1,40 @@
+.blog-form-uploader-container {
+  grid-column: 1/-1;
+}
+
+.blog-form-label {
+  color: #1a1a1f;
+  font-family: FiraGoMedium;
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.blog-form-file-input-container {
+  width: 60rem;
+  height: 18rem;
+  border-radius: 12px;
+  border: 1px dashed #85858d;
+  background: #f4f3ff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.blog-form-file-input-container p span {
+  text-decoration: underline;
+}
+
+.blog-form-file-input-container p {
+  color: #1a1a1f;
+  font-family: FiraGOregular;
+  font-size: 1.4rem;
+}
+
+.upload-icon {
+  width: 4rem;
+  height: 4rem;
+}

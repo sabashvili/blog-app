@@ -5,6 +5,7 @@ import { ModalContext } from "./Providers/ModalProvider";
 import { AuthContext } from "./Providers/AuthProvider";
 import LoginModal from "./Modals/LoginModal";
 import SuccessModal from "./Modals/SuccessModal";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const modalCtx = useContext(ModalContext);
@@ -17,8 +18,6 @@ const Header = () => {
   return (
     <>
       {authCtx.authorized ? <SuccessModal /> : <LoginModal />}
-
-      {}
       <header>
         <div className={classes["header-container"]}>
           <img
@@ -28,12 +27,12 @@ const Header = () => {
           />
 
           {authCtx.authorized ? (
-            <button
-              onClick={loginClickHandler}
+            <Link
+              to="/blog_create"
               className={classes["login-btn"]}
             >
               დაამატე ბლოგი
-            </button>
+            </Link>
           ) : (
             <button
               onClick={loginClickHandler}
