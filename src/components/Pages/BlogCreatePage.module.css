@@ -53,3 +53,9 @@
   padding: 10px 20px;
   grid-column: 2;
 }
+
+.back-to-page-btn {
+  position: absolute;
+  top: 12rem;
+  left: 7.6rem;
+}

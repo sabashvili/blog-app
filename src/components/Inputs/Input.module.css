@@ -11,6 +11,10 @@
   display: inline;
 }
 
+.blog-form-text-input:hover {
+  background: #f9f9fa;
+}
+
 .blog-form-label {
   color: #1a1a1f;
   font-family: FiraGoMedium;

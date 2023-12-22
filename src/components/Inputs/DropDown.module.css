@@ -21,6 +21,15 @@
   padding: 1.2rem 1.2rem 1.2rem 1.6rem;
   width: 28.6rem;
   text-align: start;
+  position: relative;
+}
+
+.blog-form-text-input::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-form-text-input:hover {
+  background: #f9f9fa;
 }
 
 .blog-form-text-input-inner {
@@ -57,6 +66,7 @@
   background: #fff;
   box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
   padding: 1.6rem 2.7rem 1.6rem 1.6rem;
+  position: absolute;
 }
 
 .category {

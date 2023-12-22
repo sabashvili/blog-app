@@ -8,18 +8,20 @@ import { useRef, useEffect } from "react";
 const DropDown = () => {
   const categoriesCtx = useContext(CategoriesContext);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState([]);
-  const [isDropDownOpen, SetIsDropDownOpen] = useState(false);
-
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  console.log();
   const dropDownRef = useRef();
 
   useEffect(() => {
-    const closeNavBar = (e) => {
+    const closeDropDown = (e) => {
       if (!dropDownRef.current.contains(e.target)) {
-        SetIsDropDownOpen(false);
+        setIsDropDownOpen(false);
       }
     };
-    document.addEventListener("mousedown", closeNavBar);
-  });
+    const pageContainer = document.querySelector(".blog-create-page");
+
+    pageContainer.addEventListener("mousedown", closeDropDown);
+  }, []);
 
   const addOrRemoveSelectedCategory = (id) => {
     let updatedSelectedCategories = [...selectedCategoryIds];
@@ -36,10 +38,10 @@ const DropDown = () => {
       <label className={classes["blog-form-label"]}>კატეგორია *</label>
       <div className={classes["blog-form-text-input-container"]}>
         <div
-          value="აირჩიეთ კატეგორია"
           className={`${classes["blog-form-text-input"]} `}
-          onClick={() => (!isDropDownOpen ? SetIsDropDownOpen(true) : "")}
+          onClick={() => (!isDropDownOpen ? setIsDropDownOpen(true) : "")}
         >
+          {selectedCategoryIds.length == 0 ? "კატეგორია" : ""}
           <div className={classes["blog-form-text-input-inner"]}>
             {categoriesCtx.categoriesData
               .filter((cur) => selectedCategoryIds.includes(cur.id))
@@ -65,7 +67,7 @@ const DropDown = () => {
             className={classes["blog-form-text-input-arrow"]}
             src={ArrowDown}
             alt="arrow"
-            onClick={() => SetIsDropDownOpen(!isDropDownOpen)}
+            onClick={() => setIsDropDownOpen(!isDropDownOpen)}
           />
         </div>
 

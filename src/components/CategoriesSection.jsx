@@ -1,6 +1,4 @@
 import classes from "./CategoriesSection.module.css";
-import { getCategories } from "../API";
-import { useEffect, useState } from "react";
 import { CategoriesContext } from "./Providers/CategoriesProvider";
 import { useContext } from "react";
 

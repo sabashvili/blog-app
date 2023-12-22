@@ -2,6 +2,10 @@
   grid-column: 1/-1;
 }
 
+.blog-form-file-input-container:hover {
+  background: #f1effb;
+}
+
 .blog-form-label {
   color: #1a1a1f;
   font-family: FiraGoMedium;
@@ -37,4 +41,40 @@
 .upload-icon {
   width: 4rem;
   height: 4rem;
+}
+
+.blog-form-uploaded-container {
+  grid-column: 1/-1;
+  border-radius: 12px;
+  background: #f2f2fa;
+  padding: 0 1.6rem;
+
+  width: 60rem;
+  height: 5.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-form-uploaded-inner {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.blog-form-uploaded-image-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.blog-form-uploaded-file-name {
+  color: #1a1a1f;
+
+  font-family: FiraGoRegular;
+  font-size: 1.4rem;
+}
+
+.close-btn {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
 }

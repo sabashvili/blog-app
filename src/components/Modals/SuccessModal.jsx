@@ -1,13 +1,11 @@
 import classes from "./SuccessModal.module.css";
 import CustomModal from "./CustomModal";
 import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
 import { ModalContext } from "../Providers/ModalProvider";
 import closeBtnIcon from "../../Images/close-btn-icon.svg";
 import successModalIcon from "../../Images/success-modal-icon.svg";
 
 const SuccessModal = () => {
-  const loginCtx = useContext(AuthContext);
   const modalCtx = useContext(ModalContext);
 
   return (
