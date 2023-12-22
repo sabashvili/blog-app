@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BlogCreatePage from "./components/Pages/BlogCreatePage";
 import AuthProvider from "./components/Providers/AuthProvider";
 import ModalProvider from "./components/Providers/ModalProvider";
+import CategoriesProvider from "./components/Providers/CategoriesProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 Modal.setAppElement("#root");
@@ -25,9 +26,11 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <ModalProvider>
-        <RouterProvider router={router} />
-      </ModalProvider>
+      <CategoriesProvider>
+        <ModalProvider>
+          <RouterProvider router={router} />
+        </ModalProvider>
+      </CategoriesProvider>
     </AuthProvider>
   </React.StrictMode>
 );

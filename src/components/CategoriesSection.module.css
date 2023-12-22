@@ -24,4 +24,5 @@
   list-style-type: none;
   display: flex;
   flex-shrink: 0;
+  display: flex;
 }

@@ -1,0 +1,79 @@
+.blog-form-label {
+  color: #1a1a1f;
+  font-family: FiraGoMedium;
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.blog-form-text-input {
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  gap: 0.8rem;
+  height: 4.4rem;
+  border-radius: 12px;
+  border: 1px solid #e4e3eb;
+  background: #fcfcfd;
+  color: #85858d;
+  font-family: FiraGOregular;
+  font-size: 1.4rem;
+  padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+  width: 28.6rem;
+  text-align: start;
+}
+
+.blog-form-text-input-inner {
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  gap: 0.8rem;
+  font-family: FiraGOregular;
+  font-size: 1.4rem;
+  text-align: start;
+  width: 90%;
+}
+
+.blog-form-text-input-container {
+  position: relative;
+}
+
+.blog-form-text-input-arrow {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: row;
+  width: 28.8rem;
+  height: 14.4rem;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid #e4e3eb;
+  background: #fff;
+  box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  padding: 1.6rem 2.7rem 1.6rem 1.6rem;
+}
+
+.category {
+  border-radius: 30px;
+  padding: 0.8rem 1.6rem;
+  font-family: FiraGoRegular;
+  font-size: 1.2rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  flex-shrink: 0;
+  height: 3.2rem;
+}
+
+.form-element-close-btn {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke: red;
+}

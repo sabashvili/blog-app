@@ -10,11 +10,9 @@ const Textarea = ({ labelTaxt, validationList, placeholder }) => {
         className={classes["blog-form-textarea"]}
       />
       <ul className={classes["valid-text-list"]}>
-        <li>
-          {validationList.map((cur) => {
-            return <li>{cur}</li>;
-          })}
-        </li>
+        {validationList.map((cur, index) => (
+          <li key={index}>{cur}</li>
+        ))}
       </ul>
     </div>
   );

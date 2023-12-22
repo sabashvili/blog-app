@@ -1,18 +1,16 @@
 import classes from "./CategoriesSection.module.css";
 import { getCategories } from "../API";
 import { useEffect, useState } from "react";
+import { CategoriesContext } from "./Providers/CategoriesProvider";
+import { useContext } from "react";
 
 const CategoriesSection = () => {
-  const [categoriesData, setCategoriesData] = useState([]);
-
-  useEffect(() => {
-    getCategories().then((res) => res.json().then((res) => setCategoriesData(res.data)));
-  }, []);
+  const categoriesCtx = useContext(CategoriesContext);
 
   return (
     <section className={classes["categories-section"]}>
       <ul className={classes["categories-container"]}>
-        {categoriesData.map((categ) => {
+        {categoriesCtx.categoriesData.map((categ) => {
           return (
             <li
               key={categ.id}
