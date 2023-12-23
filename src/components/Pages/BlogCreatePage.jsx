@@ -24,11 +24,13 @@ const BlogCreatePage = () => {
     <div className="blog-create-page">
       <header>
         <div className={classes["header-container"]}>
-          <img
-            src={redberryLogo}
-            alt="redberry logo"
-            className={classes["main-header-logo"]}
-          />
+          <Link to="/">
+            <img
+              src={redberryLogo}
+              alt="redberry logo"
+              className={classes["main-header-logo"]}
+            />
+          </Link>
         </div>
       </header>
 

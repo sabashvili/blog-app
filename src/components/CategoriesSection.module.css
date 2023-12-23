@@ -25,4 +25,10 @@
   display: flex;
   flex-shrink: 0;
   display: flex;
+  cursor: pointer;
+  scale: 95%;
+}
+
+.selected-categories-border {
+  box-shadow: 0 0 0 1px #000;
 }

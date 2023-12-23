@@ -41,7 +41,7 @@ const DropDown = () => {
           className={`${classes["blog-form-text-input"]} `}
           onClick={() => (!isDropDownOpen ? setIsDropDownOpen(true) : "")}
         >
-          {selectedCategoryIds.length == 0 ? "კატეგორია" : ""}
+          {selectedCategoryIds.length === 0 ? "კატეგორია" : ""}
           <div className={classes["blog-form-text-input-inner"]}>
             {categoriesCtx.categoriesData
               .filter((cur) => selectedCategoryIds.includes(cur.id))
