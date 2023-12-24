@@ -3,7 +3,7 @@ import redberryLogo from "../../Images/redberry-logo.png";
 import UploaderInput from "../Inputs/UploaderInput";
 import Input from "../Inputs/Input";
 import Textarea from "../Inputs/Textarea";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DropDown from "../Inputs/DropDown";
 import "../Inputs/Input.module.css";
 import backArrowIcon from "../../Images/back-arrow.svg";
@@ -13,12 +13,21 @@ import { AuthContext } from "../Providers/AuthProvider";
 const BlogCreatePage = () => {
   const authCtx = useContext(AuthContext);
 
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
-  const [category, setCategory] = useState("");
-  const [authorEmail, setAuthorEmail] = useState("");
+  const [inputData, setInputData] = useState({
+    photo: "",
+    author: "",
+    title: "",
+    description: "",
+    date: "",
+    category: "",
+    authorEmail: "",
+  });
+
+  const inputChangeHandler = (e) => {
+    setInputData({ ...inputData, [e.target.name]: e.target.value });
+  };
+
+  console.log(inputData);
 
   return (
     <div className="blog-create-page">
@@ -48,39 +57,50 @@ const BlogCreatePage = () => {
           <div className={classes["blog-create-container"]}>
             <h1 className={classes["blog-create-title"]}>ბლოგის დამატება</h1>
             <form className={classes["blog-create-form"]}>
-              <UploaderInput />
+              <UploaderInput
+                setInputDatatest={setInputData}
+                inputDatatest={inputData}
+              />
               <Input
-                setAuthor={setAuthor}
+                name="author"
+                onChange={inputChangeHandler}
                 labelTaxt="ავტორი *"
                 inputType="text"
                 validationList={["მინიმუმ 4 სიმბოლო", "მინიმუმ ორი სიტყვა", "მხოლოდ ქართული სიმბოლოები"]}
                 placeholder="შეიყვნეთ ავტორი"
               />
               <Input
-                setTitle={setTitle}
+                name="title"
+                onChange={inputChangeHandler}
                 labelTaxt="სათური *"
                 inputType="text"
                 validationList={["მინიმუმ 4 სიმბოლო"]}
                 placeholder="შეიყვნეთ სათაური"
               />
               <Textarea
-                setDescription={setDescription}
+                name="description"
+                onChange={inputChangeHandler}
                 labelTaxt="აღწერა *"
                 validationList={["მინიმუმ 2 სიმბოლო"]}
                 placeholder="შეიყვნეთ აღწერა"
               />
               <Input
-                setDate={setDate}
+                name="date"
+                onChange={inputChangeHandler}
                 labelTaxt="გამოქვეყნების თარიღი *"
                 inputType="date"
                 validationList={[]}
                 placeholder="შეიყვნეთ სათაური"
               />
 
-              <DropDown />
+              <DropDown
+                setInputDatatest={setInputData}
+                inputDatatest={inputData}
+              />
 
               <Input
-                setAuthorEmail={setAuthorEmail}
+                name="authorEmail"
+                onChange={inputChangeHandler}
                 fullLineClass="full-line-input"
                 labelTaxt="ელ-ფოსტა"
                 inputType="mail"

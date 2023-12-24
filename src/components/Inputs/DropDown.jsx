@@ -5,11 +5,10 @@ import ArrowDown from "../../Images/arrow-down.svg";
 import closeBtnIcon from "../../Images/arrow-form.svg";
 import { useRef, useEffect } from "react";
 
-const DropDown = () => {
+const DropDown = ({ setInputDatatest, inputDatatest }) => {
   const categoriesCtx = useContext(CategoriesContext);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState([]);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  console.log();
   const dropDownRef = useRef();
 
   useEffect(() => {
@@ -32,6 +31,10 @@ const DropDown = () => {
     }
     setSelectedCategoryIds(updatedSelectedCategories);
   };
+
+  useEffect(() => {
+    setInputDatatest({ ...inputDatatest, category: selectedCategoryIds });
+  }, [selectedCategoryIds]);
 
   return (
     <div ref={dropDownRef}>

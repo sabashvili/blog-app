@@ -1,10 +1,10 @@
 import classes from "./UploaderInput.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import uploadIcon from "../../Images/upload-icon.svg";
 import imageIcon from "../../Images/image-icon.svg";
 import closeBtn from "../../Images/close-btn-icon.svg";
 
-const UploaderInput = () => {
+const UploaderInput = ({ setInputDatatest, inputDatatest }) => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const uploaderRef = useRef();
 
@@ -20,6 +20,10 @@ const UploaderInput = () => {
   const handleFileChange = (e) => {
     setUploadedFile(e.target.files[0]);
   };
+
+  useEffect(() => {
+    setInputDatatest({ ...inputDatatest, photo: uploadedFile });
+  }, [uploadedFile]);
 
   // console.log(uploadedFile);
 
