@@ -9,6 +9,7 @@ import "../Inputs/Input.module.css";
 import backArrowIcon from "../../Images/back-arrow.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import XRegExp from "xregexp";
 
 const BlogCreatePage = () => {
   const authCtx = useContext(AuthContext);
@@ -23,11 +24,79 @@ const BlogCreatePage = () => {
     authorEmail: "",
   });
 
+  const [validationData, setValidationData] = useState({
+    photoValidation: null,
+    authorValidation: [null, null, null],
+    titleValidation: [],
+    descriptionValidation: [],
+    dateValidation: null,
+    categoryValidation: null,
+    authorEmailValidation: null,
+  });
+
   const inputChangeHandler = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
-  console.log(inputData);
+  const atLeastSymbolValidate = (curText, updatedArr, minSymbol, index) => {
+    const updatedAuthorValidation = [...updatedArr];
+    const text = curText;
+
+    if (text.length >= minSymbol) {
+      updatedAuthorValidation[index] = true;
+    } else {
+      updatedAuthorValidation[index] = false;
+    }
+
+    return updatedAuthorValidation;
+  };
+
+  const atLeastWordsValidate = (curText, updatedArr, index) => {
+    const updatedAuthorValidation = [...updatedArr];
+    const text = curText;
+    const atLeastTwoWordsPattern = /^[a-zA-Zა-ჰ]+(\s[a-zA-Zა-ჰ]+)+$/;
+
+    const hasAtLeastTwoWords = atLeastTwoWordsPattern.test(text);
+
+    if (hasAtLeastTwoWords) {
+      updatedAuthorValidation[index] = true;
+    } else {
+      updatedAuthorValidation[index] = false;
+    }
+
+    return updatedAuthorValidation;
+  };
+
+  const isGeorgian = (curText, updatedArr, index) => {
+    const updatedAuthorValidation = [...updatedArr];
+    const text = curText;
+    const georgianRegex = XRegExp("^\\p{Georgian}+( \\p{Georgian}+)*$");
+
+    const hasInGeorgian = georgianRegex.test(text);
+
+    if (hasInGeorgian) {
+      updatedAuthorValidation[index] = true;
+    } else {
+      updatedAuthorValidation[index] = false;
+    }
+
+    return updatedAuthorValidation;
+  };
+
+  const authorValidate = () => {
+    let updatedAuthorValidation = atLeastSymbolValidate(inputData.author, validationData.authorValidation, 4, 0);
+    updatedAuthorValidation = atLeastWordsValidate(inputData.author, updatedAuthorValidation, 1);
+    updatedAuthorValidation = isGeorgian(inputData.author, updatedAuthorValidation, 2);
+
+    setValidationData({
+      ...validationData,
+      authorValidation: updatedAuthorValidation,
+    });
+  };
+
+  console.log(validationData);
+
+  useEffect(() => authorValidate(), [inputData.author]);
 
   return (
     <div className="blog-create-page">
