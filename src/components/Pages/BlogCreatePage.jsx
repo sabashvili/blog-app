@@ -86,22 +86,9 @@ const BlogCreatePage = () => {
   };
 
   const authorValidate = () => {
-    let updatedAuthorValidation = atLeastSymbolValidate(
-      inputData.author,
-      validationData.authorValidation,
-      4,
-      0
-    );
-    updatedAuthorValidation = atLeastWordsValidate(
-      inputData.author,
-      updatedAuthorValidation,
-      1
-    );
-    updatedAuthorValidation = isGeorgian(
-      inputData.author,
-      updatedAuthorValidation,
-      2
-    );
+    let updatedAuthorValidation = atLeastSymbolValidate(inputData.author, validationData.authorValidation, 4, 0);
+    updatedAuthorValidation = atLeastWordsValidate(inputData.author, updatedAuthorValidation, 1);
+    updatedAuthorValidation = isGeorgian(inputData.author, updatedAuthorValidation, 2);
 
     setValidationData({
       ...validationData,
@@ -110,12 +97,7 @@ const BlogCreatePage = () => {
   };
 
   const titleValidate = () => {
-    let updatedAuthorValidation = atLeastSymbolValidate(
-      inputData.title,
-      validationData.titleValidation,
-      4,
-      0
-    );
+    let updatedAuthorValidation = atLeastSymbolValidate(inputData.title, validationData.titleValidation, 4, 0);
     setValidationData({
       ...validationData,
       titleValidation: updatedAuthorValidation,
@@ -123,12 +105,7 @@ const BlogCreatePage = () => {
   };
 
   const descriptionValidate = () => {
-    let updatedAuthorValidation = atLeastSymbolValidate(
-      inputData.description,
-      validationData.descriptionValidation,
-      2,
-      0
-    );
+    let updatedAuthorValidation = atLeastSymbolValidate(inputData.description, validationData.descriptionValidation, 2, 0);
     setValidationData({
       ...validationData,
       descriptionValidation: updatedAuthorValidation,
@@ -170,9 +147,7 @@ const BlogCreatePage = () => {
 
   const authorEmailValidate = () => {
     let updatedAuthorEmailValidation;
-    const isValid =
-      inputData.authorEmail.endsWith("@redberry.ge") &&
-      inputData.authorEmail.length > "@redberry.ge".length;
+    const isValid = inputData.authorEmail.endsWith("@redberry.ge") && inputData.authorEmail.length > "@redberry.ge".length;
 
     if (inputData.authorEmail.length > 0) {
       if (isValid) {
@@ -193,9 +168,7 @@ const BlogCreatePage = () => {
   const checkAllValidation = () => {
     const conditions = validationData;
 
-    const allValuesValid = Object.values(conditions).every((validationArray) =>
-      validationArray.every((value) => value === true)
-    );
+    const allValuesValid = Object.values(conditions).every((validationArray) => validationArray.every((value) => value === true));
 
     setHasAllValidationDone(allValuesValid);
   };
@@ -207,9 +180,9 @@ const BlogCreatePage = () => {
   const blogCreateSubmitHandler = (e) => {
     e.preventDefault();
 
-    // blogCreate(inputData).then((res) =>
-    //   res.json().then((res) => console.log(res))
-    // );
+    blogCreate(inputData)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   useEffect(() => authorValidate(), [inputData.author]);
@@ -235,8 +208,14 @@ const BlogCreatePage = () => {
       </header>
 
       <section className={classes["blog-create-section"]}>
-        <Link className={classes["back-to-page-btn"]} to="/">
-          <img src={backArrowIcon} alt="back arrow" />
+        <Link
+          className={classes["back-to-page-btn"]}
+          to="/"
+        >
+          <img
+            src={backArrowIcon}
+            alt="back arrow"
+          />
         </Link>
         {authCtx.authorized ? (
           <div className={classes["blog-create-container"]}>
@@ -255,11 +234,7 @@ const BlogCreatePage = () => {
                 onChange={inputChangeHandler}
                 labelTaxt="ავტორი *"
                 inputType="text"
-                validationList={[
-                  "მინიმუმ 4 სიმბოლო",
-                  "მინიმუმ ორი სიტყვა",
-                  "მხოლოდ ქართული სიმბოლოები",
-                ]}
+                validationList={["მინიმუმ 4 სიმბოლო", "მინიმუმ ორი სიტყვა", "მხოლოდ ქართული სიმბოლოები"]}
                 placeholder="შეიყვნეთ ავტორი"
               />
               <Input
@@ -307,9 +282,7 @@ const BlogCreatePage = () => {
               />
 
               <button
-                className={`${classes["blog-create-btn"]} ${
-                  hasAllValidationDone ? classes["active-blog-create-btn"] : ""
-                }`}
+                className={`${classes["blog-create-btn"]} ${hasAllValidationDone ? classes["active-blog-create-btn"] : ""}`}
                 type="submit"
               >
                 გამოქვეყნება
