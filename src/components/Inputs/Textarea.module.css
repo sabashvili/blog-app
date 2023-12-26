@@ -41,3 +41,17 @@
   font-family: FiraGOregular;
   font-size: 1.2rem;
 }
+
+.valid {
+  color: #14d81c !important;
+}
+.invalid {
+  color: #ea1919 !important;
+}
+
+.validBackground {
+  border: 1px solid #14d81c;
+}
+.invalidBackground {
+  border: 1px solid #ea1919;
+}
