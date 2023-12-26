@@ -49,7 +49,6 @@ const Input = ({
 
   const isEmailValid = () => {
     if (validationData.authorEmailValidation[0] === false) {
-      console.log("first");
       return (
         <EmailErrorMessage message="მეილი უნდა მთავრდებოდეს @redberry.ge-ით" />
       );

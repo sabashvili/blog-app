@@ -5,7 +5,7 @@ import ArrowDown from "../../Images/arrow-down.svg";
 import closeBtnIcon from "../../Images/arrow-form.svg";
 import { useRef, useEffect } from "react";
 
-const DropDown = ({ setInputDatatest, inputDatatest }) => {
+const DropDown = ({ setInputDatatest, inputDatatest, validationData }) => {
   const categoriesCtx = useContext(CategoriesContext);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState([]);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -27,7 +27,9 @@ const DropDown = ({ setInputDatatest, inputDatatest }) => {
     if (!selectedCategoryIds.includes(id)) {
       updatedSelectedCategories.push(id);
     } else {
-      updatedSelectedCategories = updatedSelectedCategories.filter((cur) => cur !== id);
+      updatedSelectedCategories = updatedSelectedCategories.filter(
+        (cur) => cur !== id
+      );
     }
     setSelectedCategoryIds(updatedSelectedCategories);
   };
@@ -36,12 +38,20 @@ const DropDown = ({ setInputDatatest, inputDatatest }) => {
     setInputDatatest({ ...inputDatatest, category: selectedCategoryIds });
   }, [selectedCategoryIds]);
 
+  const validUpdateClass = () => {
+    if (validationData.categoryValidation[0] === true) {
+      return classes.validBackground;
+    } else if (validationData.categoryValidation[0] === false) {
+      return classes.invalidBackground;
+    }
+  };
+
   return (
     <div ref={dropDownRef}>
       <label className={classes["blog-form-label"]}>კატეგორია *</label>
       <div className={classes["blog-form-text-input-container"]}>
         <div
-          className={`${classes["blog-form-text-input"]} `}
+          className={`${classes["blog-form-text-input"]} ${validUpdateClass()}`}
           onClick={() => (!isDropDownOpen ? setIsDropDownOpen(true) : "")}
         >
           {selectedCategoryIds.length === 0 ? "კატეგორია" : ""}
@@ -52,7 +62,10 @@ const DropDown = ({ setInputDatatest, inputDatatest }) => {
                 return (
                   <li
                     key={categ.id}
-                    style={{ color: `${categ["text_color"]}`, backgroundColor: `${categ["background_color"]}` }}
+                    style={{
+                      color: `${categ["text_color"]}`,
+                      backgroundColor: `${categ["background_color"]}`,
+                    }}
                     className={classes["category"]}
                   >
                     <div>{categ.title}</div>
@@ -83,7 +96,10 @@ const DropDown = ({ setInputDatatest, inputDatatest }) => {
                   <li
                     onClick={() => addOrRemoveSelectedCategory(categ.id)}
                     key={categ.id}
-                    style={{ color: `${categ["text_color"]}`, backgroundColor: `${categ["background_color"]}` }}
+                    style={{
+                      color: `${categ["text_color"]}`,
+                      backgroundColor: `${categ["background_color"]}`,
+                    }}
                     className={classes["category"]}
                   >
                     {categ.title}

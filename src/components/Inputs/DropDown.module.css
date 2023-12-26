@@ -24,6 +24,15 @@
   position: relative;
 }
 
+.blog-form-text-input-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-form-text-input {
+  scrollbar-width: thin;
+  -ms-overflow-style: none;
+}
+
 .blog-form-text-input::-webkit-scrollbar {
   display: none;
 }
@@ -86,4 +95,11 @@
   width: 1.6rem;
   height: 1.6rem;
   stroke: red;
+}
+
+.validBackground {
+  border: 1px solid #14d81c;
+}
+.invalidBackground {
+  border: 1px solid #ea1919;
 }

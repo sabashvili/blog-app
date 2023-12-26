@@ -10,9 +10,11 @@ import backArrowIcon from "../../Images/back-arrow.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import XRegExp from "xregexp";
+import { blogCreate } from "../../API";
 
 const BlogCreatePage = () => {
   const authCtx = useContext(AuthContext);
+  const [hasAllValidationDone, setHasAllValidationDone] = useState(false);
 
   const [inputData, setInputData] = useState({
     photo: "",
@@ -30,7 +32,7 @@ const BlogCreatePage = () => {
     titleValidation: [null],
     descriptionValidation: [null],
     dateValidation: [null],
-    categoryValidation: [null],
+    categoryValidation: [],
     authorEmailValidation: [null],
   });
 
@@ -142,6 +144,21 @@ const BlogCreatePage = () => {
     });
   };
 
+  const categoriesValidate = () => {
+    let updatedCategoriesValidation = validationData.categoryValidation;
+
+    if (updatedCategoriesValidation.length === 0) {
+      updatedCategoriesValidation = [null];
+    } else {
+      updatedCategoriesValidation = [Boolean(inputData.category.length > 0)];
+    }
+
+    setValidationData({
+      ...validationData,
+      categoryValidation: updatedCategoriesValidation,
+    });
+  };
+
   const photoValidate = () => {
     let updatedPhotoValidation = [Boolean(inputData.photo)];
 
@@ -173,14 +190,34 @@ const BlogCreatePage = () => {
     });
   };
 
-  console.log(validationData);
+  const checkAllValidation = () => {
+    const conditions = validationData;
+
+    const allValuesValid = Object.values(conditions).every((validationArray) =>
+      validationArray.every((value) => value === true)
+    );
+
+    setHasAllValidationDone(allValuesValid);
+  };
+
+  useEffect(() => {
+    checkAllValidation();
+  }, [validationData]);
+
+  const blogCreateSubmitHandler = (e) => {
+    e.preventDefault();
+
+    // blogCreate(inputData).then((res) =>
+    //   res.json().then((res) => console.log(res))
+    // );
+  };
 
   useEffect(() => authorValidate(), [inputData.author]);
   useEffect(() => titleValidate(), [inputData.title]);
   useEffect(() => descriptionValidate(), [inputData.description]);
   useEffect(() => dateValidate(), [inputData.date]);
+  useEffect(() => categoriesValidate(), [inputData.category]);
   useEffect(() => authorEmailValidate(), [inputData.authorEmail]);
-
   useEffect(() => photoValidate(), [inputData.photo]);
 
   return (
@@ -204,7 +241,10 @@ const BlogCreatePage = () => {
         {authCtx.authorized ? (
           <div className={classes["blog-create-container"]}>
             <h1 className={classes["blog-create-title"]}>ბლოგის დამატება</h1>
-            <form className={classes["blog-create-form"]}>
+            <form
+              onSubmit={blogCreateSubmitHandler}
+              className={classes["blog-create-form"]}
+            >
               <UploaderInput
                 setInputDatatest={setInputData}
                 inputDatatest={inputData}
@@ -252,6 +292,7 @@ const BlogCreatePage = () => {
               <DropDown
                 setInputDatatest={setInputData}
                 inputDatatest={inputData}
+                validationData={validationData}
               />
 
               <Input
@@ -265,7 +306,12 @@ const BlogCreatePage = () => {
                 placeholder="Example@redberry.ge"
               />
 
-              <button className={classes["blog-create-btn"]} type="submit">
+              <button
+                className={`${classes["blog-create-btn"]} ${
+                  hasAllValidationDone ? classes["active-blog-create-btn"] : ""
+                }`}
+                type="submit"
+              >
                 გამოქვეყნება
               </button>
             </form>

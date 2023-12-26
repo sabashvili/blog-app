@@ -21,11 +21,24 @@ const UploaderInput = ({ setInputDatatest, inputDatatest }) => {
     setUploadedFile(e.target.files[0]);
   };
 
+  // const handleFileChange = (e) => {
+  //   // setUploadedFile(e.target.files[0]);
+  //   const reader = new FileReader();
+
+  //   reader.onload = function (event) {
+  //     const binaryData = event.target.result;
+  //     setUploadedFile(binaryData);
+  //   };
+
+  //   if (e.target.files.length > 0) {
+  //     const file = e.target.files[0];
+  //     reader.readAsArrayBuffer(file);
+  //   }
+  // };
+
   useEffect(() => {
     setInputDatatest({ ...inputDatatest, photo: uploadedFile });
   }, [uploadedFile]);
-
-  // console.log(uploadedFile);
 
   return (
     <>
@@ -37,7 +50,9 @@ const UploaderInput = ({ setInputDatatest, inputDatatest }) => {
               alt="pic"
               className={classes["blog-form-uploaded-image-icon"]}
             />
-            <h2 className={classes["blog-form-uploaded-file-name"]}>{uploadedFile?.name}</h2>
+            <h2 className={classes["blog-form-uploaded-file-name"]}>
+              {uploadedFile?.name}
+            </h2>
           </div>
           <button
             onClick={() => setUploadedFile(null)}

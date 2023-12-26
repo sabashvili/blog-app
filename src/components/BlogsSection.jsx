@@ -34,15 +34,13 @@ const BlogsSection = () => {
 
   useEffect(() => blogFilter(), [categoriesCtx.filteredCategories, blogList]);
 
-  const whitchBlogList = categoriesCtx.filteredCategories.length === 0 ? blogList : filteredBlog;
+  const whitchBlogList =
+    categoriesCtx.filteredCategories.length === 0 ? blogList : filteredBlog;
 
   return (
     <ul className={classes["blogs-container"]}>
       {whitchBlogList.map((blog) => (
-        <BlogCard
-          key={blog.id}
-          blog={blog}
-        />
+        <BlogCard key={blog.id} blog={blog} />
       ))}
     </ul>
   );
