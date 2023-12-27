@@ -1,5 +1,6 @@
 import classes from "./BlogCard.module.css";
 import blogOpenArrowIcon from "../../Images/blog-open-arrow-icon.svg";
+import { Link } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
   const { id, author, title, description, image, categories, publish_date } = blog;
@@ -32,8 +33,8 @@ const BlogCard = ({ blog }) => {
           })}
         </ul>
         <p className={classes["blog-description"]}>{description}</p>
-        <a
-          href="/"
+        <Link
+          to={`blog/${id}`}
           className={classes["blog-fully-open"]}
         >
           სრულად ნახვა
@@ -41,7 +42,7 @@ const BlogCard = ({ blog }) => {
             src={blogOpenArrowIcon}
             alt="arrow icon"
           />
-        </a>
+        </Link>
       </div>
     </li>
   );
