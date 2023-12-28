@@ -30,7 +30,11 @@ const BlogCard = ({ blog }) => {
           })}
         </ul>
         <p className={classes["blog-description"]}>{description}</p>
-        <Link to={`blog/${id}`} className={classes["blog-fully-open"]}>
+        <Link
+          to={`/blog/${id}`}
+          // onClick={handleBlogClick}
+          className={classes["blog-fully-open"]}
+        >
           სრულად ნახვა
           <img src={blogOpenArrowIcon} alt="arrow icon" />
         </Link>

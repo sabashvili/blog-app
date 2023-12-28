@@ -1,5 +1,8 @@
 const API_URL = "https://api.blog.redberryinternship.ge/api";
-const TOKEN = "59cc20dfcd124d87aa8af54342e1ed9438e70473c8422d820221b5bd5945f28a";
+// const TOKEN =
+//   "59cc20dfcd124d87aa8af54342e1ed9438e70473c8422d820221b5bd5945f28a";
+const TOKEN =
+  "f41b884660edc6f431d281e8600458db83c2efe3aab2a331f1e35170a9f32732";
 
 export const getCategories = () => fetch(`${API_URL}/categories`);
 export const getBlogs = () =>
@@ -35,3 +38,8 @@ export const blogCreate = (data) => {
     body: formData,
   });
 };
+
+export const getCurBlog = (id) =>
+  fetch(`${API_URL}/blogs/${id}`, {
+    headers: { Authorization: `Bearer ${TOKEN}`, accept: "application/json" },
+  });

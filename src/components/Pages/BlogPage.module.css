@@ -82,11 +82,13 @@
 }
 
 .blogs-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 3.2rem;
-  row-gap: 5.6rem;
   margin-top: 4rem;
+  display: grid;
+  grid-auto-columns: 40.8rem;
+  grid-auto-flow: column;
+  column-gap: 3.2rem;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
 }
 
 .section-first-line {
