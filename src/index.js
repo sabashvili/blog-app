@@ -8,6 +8,7 @@ import BlogCreatePage from "./components/Pages/BlogCreatePage";
 import AuthProvider from "./components/Providers/AuthProvider";
 import ModalProvider from "./components/Providers/ModalProvider";
 import CategoriesProvider from "./components/Providers/CategoriesProvider";
+import BlogPage from "./components/Pages/BlogPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 Modal.setAppElement("#root");
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "blog_create",
     element: <BlogCreatePage />,
+  },
+  {
+    path: "blog/:id",
+    element: <BlogPage />,
   },
 ]);
 

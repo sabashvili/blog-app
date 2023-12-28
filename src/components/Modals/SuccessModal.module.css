@@ -8,11 +8,14 @@
 }
 
 .success-modal-close-btn {
-  align-self: end;
   display: inline-block;
   background-color: inherit;
   border: none;
   cursor: pointer;
+}
+
+.return-starter-page {
+  align-self: end;
 }
 
 .success-modal-close-icon {

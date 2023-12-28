@@ -17,7 +17,11 @@ const Header = () => {
 
   return (
     <>
-      {authCtx.authorized ? <SuccessModal /> : <LoginModal />}
+      {authCtx.authorized ? (
+        <SuccessModal title="წარმატებული ავტორიზაცია" btnText="კარგი" />
+      ) : (
+        <LoginModal />
+      )}
       <header>
         <div className={classes["header-container"]}>
           <img
@@ -27,10 +31,7 @@ const Header = () => {
           />
 
           {authCtx.authorized ? (
-            <Link
-              to="/blog_create"
-              className={classes["login-btn"]}
-            >
+            <Link to="/blog_create" className={classes["login-btn"]}>
               დაამატე ბლოგი
             </Link>
           ) : (
