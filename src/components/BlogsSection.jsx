@@ -7,14 +7,17 @@ import { CategoriesContext } from "./Providers/CategoriesProvider";
 
 const BlogsSection = () => {
   const [blogList, setBlogList] = useState([]);
+  const [blogListByDate, setBlogListByDate] = useState([]);
   const categoriesCtx = useContext(CategoriesContext);
   const [filteredBlog, setFilteredBlog] = useState([]);
+
+  const date = new Date();
 
   useEffect(() => {
     getBlogs().then((res) => res.json().then((res) => setBlogList(res.data)));
   }, []);
 
-  const blogFilter = () => {
+  const blogFilterByCategories = () => {
     let updatedBlogList = [...filteredBlog];
 
     for (const blog of blogList) {
@@ -32,10 +35,29 @@ const BlogsSection = () => {
     setFilteredBlog(updatedBlogList);
   };
 
-  useEffect(() => blogFilter(), [categoriesCtx.filteredCategories, blogList]);
+  const blogFilterByYear = () => {
+    let updatedBlogList = [];
+
+    for (const blog of blogList) {
+      if (date >= new Date(blog["publish_date"])) {
+        updatedBlogList.push(blog);
+      }
+    }
+
+    setBlogListByDate(updatedBlogList);
+  };
+
+  useEffect(
+    () => blogFilterByCategories(),
+    [categoriesCtx.filteredCategories, blogList]
+  );
+
+  useEffect(() => blogFilterByYear(), [blogList]);
 
   const whitchBlogList =
-    categoriesCtx.filteredCategories.length === 0 ? blogList : filteredBlog;
+    categoriesCtx.filteredCategories.length === 0
+      ? blogListByDate
+      : filteredBlog;
 
   return (
     <ul className={classes["blogs-container"]}>

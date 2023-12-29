@@ -6,6 +6,10 @@ const BlogCard = ({ blog }) => {
   const { id, author, title, description, image, categories, publish_date } =
     blog;
 
+  const handleBlogClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <li key={id} className={classes["blog-container"]}>
       <img className={classes["blog-pic"]} src={image} alt="blog" />
@@ -32,7 +36,7 @@ const BlogCard = ({ blog }) => {
         <p className={classes["blog-description"]}>{description}</p>
         <Link
           to={`/blog/${id}`}
-          // onClick={handleBlogClick}
+          onClick={handleBlogClick}
           className={classes["blog-fully-open"]}
         >
           სრულად ნახვა

@@ -18,8 +18,10 @@ const BlogPage = () => {
   const [blogCategories, setBlogCategories] = useState([]);
   const [filteredBlog, setFilteredBlog] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [blogListByDate, setBlogListByDate] = useState([]);
 
   const categoriesContainerRef = useRef();
+  const date = new Date();
 
   const handleScroll = (scrollAmount) => {
     const newScrollPosition = scrollPosition + scrollAmount;
@@ -27,7 +29,17 @@ const BlogPage = () => {
     categoriesContainerRef.current.scrollLeft = newScrollPosition;
   };
 
-  //  window.scrollTo({ top: 0, behavior: "smooth" });
+  const blogFilterByYear = () => {
+    let updatedBlogList = [];
+
+    for (const blog of blogList) {
+      if (date >= new Date(blog["publish_date"])) {
+        updatedBlogList.push(blog);
+      }
+    }
+
+    setBlogListByDate(updatedBlogList);
+  };
 
   const getCategoriesOfCurBlog = (blog) => {
     let updatedCategoriesList = [];
@@ -44,7 +56,7 @@ const BlogPage = () => {
   const blogFilter = () => {
     let updatedBlogList = [];
 
-    for (const blogItem of blogList) {
+    for (const blogItem of blogListByDate) {
       if (blogItem.id !== Number(id)) {
         let blogShouldBeIncluded = false;
 
@@ -77,6 +89,8 @@ const BlogPage = () => {
   }, [blog, blogList, id]);
 
   useEffect(() => blogFilter(), [blogCategories]);
+
+  useEffect(() => blogFilterByYear(), [blogList]);
 
   return (
     <>

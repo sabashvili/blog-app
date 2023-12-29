@@ -229,8 +229,6 @@ const BlogCreatePage = () => {
     }
   };
 
-  console.log(successAddBlog);
-
   useEffect(() => authorValidate(), [inputData.author]);
   useEffect(() => titleValidate(), [inputData.title]);
   useEffect(() => descriptionValidate(), [inputData.description]);
