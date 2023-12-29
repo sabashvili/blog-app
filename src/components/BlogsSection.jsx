@@ -18,7 +18,7 @@ const BlogsSection = () => {
   }, []);
 
   const blogFilterByCategories = () => {
-    let updatedBlogList = [...filteredBlog];
+    let updatedBlogList = [];
 
     for (const blog of blogList) {
       for (const categ of blog.categories) {
@@ -47,22 +47,19 @@ const BlogsSection = () => {
     setBlogListByDate(updatedBlogList);
   };
 
-  useEffect(
-    () => blogFilterByCategories(),
-    [categoriesCtx.filteredCategories, blogList]
-  );
+  useEffect(() => blogFilterByCategories(), [categoriesCtx.filteredCategories, blogList]);
 
   useEffect(() => blogFilterByYear(), [blogList]);
 
-  const whitchBlogList =
-    categoriesCtx.filteredCategories.length === 0
-      ? blogListByDate
-      : filteredBlog;
+  const whitchBlogList = categoriesCtx.filteredCategories.length === 0 ? blogListByDate : filteredBlog;
 
   return (
     <ul className={classes["blogs-container"]}>
       {whitchBlogList.map((blog) => (
-        <BlogCard key={blog.id} blog={blog} />
+        <BlogCard
+          key={blog.id}
+          blog={blog}
+        />
       ))}
     </ul>
   );
