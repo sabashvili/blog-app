@@ -9,24 +9,27 @@ import backArrowIcon from "../../Images/back-arrow-2.svg";
 import { getCurBlog, getBlogs } from "../../API";
 import Header from "../Header";
 
-const SCROLL_WIDTH = 400;
-
 const BlogPage = () => {
+  const SCROLL_WIDTH = 440;
+
   const { id } = useParams();
   const [blogList, setBlogList] = useState([]);
   const [blog, setBlog] = useState("");
   const [blogCategories, setBlogCategories] = useState([]);
   const [filteredBlog, setFilteredBlog] = useState([]);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [blogListByDate, setBlogListByDate] = useState([]);
 
   const categoriesContainerRef = useRef();
   const date = new Date();
 
-  const handleScroll = (scrollAmount) => {
-    const newScrollPosition = scrollPosition + scrollAmount;
-    setScrollPosition(newScrollPosition);
-    categoriesContainerRef.current.scrollLeft = newScrollPosition;
+  const handleScroll = (direction) => {
+    const container = categoriesContainerRef.current;
+    const scrollAmount = direction === "left" ? -SCROLL_WIDTH : SCROLL_WIDTH;
+
+    container.scrollTo({
+      left: container.scrollLeft + scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   const blogFilterByYear = () => {
@@ -48,6 +51,7 @@ const BlogPage = () => {
       if (!updatedCategoriesList.includes(category.id)) {
         updatedCategoriesList.push(category.id);
       }
+      return null;
     });
 
     setBlogCategories(updatedCategoriesList);
@@ -132,12 +136,14 @@ const BlogPage = () => {
           <h1 className={classes["suggestion-title"]}>მსგავსი სტატიები</h1>
           <div className={classes["slider-imgs"]}>
             <img
-              onClick={() => handleScroll(-SCROLL_WIDTH)}
+              className={classes["scrolling-btn"]}
+              onClick={() => handleScroll("left")}
               src={leftArrow}
               alt="back arrow"
             />
             <img
-              onClick={() => handleScroll(SCROLL_WIDTH)}
+              className={classes["scrolling-btn"]}
+              onClick={() => handleScroll("right")}
               src={rightArrow}
               alt="back arrow"
             />

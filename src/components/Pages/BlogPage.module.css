@@ -114,3 +114,11 @@
   top: 12rem;
   left: 7.6rem;
 }
+
+.scrolling-btn {
+  cursor: pointer;
+}
+
+.blogs-container {
+  overflow: hidden;
+}
